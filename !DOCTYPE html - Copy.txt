@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>গল্প ও কবিতা ভাণ্ডার</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <h1>📖 গল্প ও কবিতা ভাণ্ডার</h1>
+    <p>পড়ুন আপনার প্রিয় গল্প ও কবিতা</p>
+  </header>
+
+  <!-- Navigation -->
+  <nav>
+    <a href="#stories">গল্প</a>
+    <a href="#poems">কবিতা</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <!-- Mini Menu for Adding New Content -->
+  <div class="mini-menu">
+    <button onclick="toggleForm()">➕ নতুন গল্প/কবিতা যোগ করুন</button>
+  </div>
+
+  <!-- Form to Add New Story/Poem -->
+  <div id="newContentForm" class="hidden">
+    <h3>নতুন গল্প/কবিতা যোগ করুন</h3>
+    <label>Title (শিরোনাম):</label><br>
+    <input type="text" id="newTitle" placeholder="শিরোনাম লিখুন"><br><br>
+    
+    <label>Type (গল্প বা কবিতা):</label><br>
+    <select id="newType">
+      <option value="story">গল্প</option>
+      <option value="poem">কবিতা</option>
+    </select><br><br>
+    
+    <label>Content (কনটেন্ট):</label><br>
+    <textarea id="newContent" rows="5" placeholder="এখানে গল্প বা কবিতা লিখুন"></textarea><br><br>
+    
+    <button onclick="addNewContent()">যোগ করুন</button>
+  </div>
+
+  <!-- Main Content -->
+  <main>
+
+    <!-- Stories Section -->
+    <section id="stories">
+      <h2>গল্প</h2>
+
+      <article>
+        <h3>এক ছিল রাজা</h3>
+        <p>এক ছিল রাজা। তার রাজ্যে শান্তি ও সমৃদ্ধি ছিল। হঠাৎ একদিন বিপদ নেমে আসে। রাজা সাহস ও বুদ্ধিমত্তা দিয়ে রাজ্য রক্ষা করে।</p>
+      </article>
+
+    </section>
+
+    <!-- Poems Section -->
+    <section id="poems">
+      <h2>কবিতা</h2>
+
+      <article>
+        <h3>আমার সোনার বাংলা - রবীন্দ্রনাথ ঠাকুর</h3>
+        <p>আমার সোনার বাংলা, আমি তোমায় ভালোবাসি। চিরদিন তোমার আকাশ, বাতাস, আমার প্রাণে বাজায় বাঁশি।</p>
+      </article>
+
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+      <h2>About</h2>
+      <p>আপনার নাম্বার: 01753566966</p>
+      <p>ইমেল: mirabir48@gmail.com</p>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+      <h2>Contact</h2>
+      <form>
+        <label>নাম্বার:</label>
+        <input type="text" placeholder="+880..." value=""><br><br>
+        <label>ইমেল:</label>
+        <input type="email" placeholder="example@email.com" value=""><br><br>
+        <label>বার্তা/নতুন গল্প/কবিতা:</label><br>
+        <textarea placeholder="এখানে নতুন গল্প বা কবিতা লিখে পাঠাতে পারেন..." rows="4"></textarea><br><br>
+        <button type="submit">পাঠান</button>
+      </form>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 গল্প ও কবিতা ভাণ্ডার | All Rights Reserved</p>
+  </footer>
+
+  <!-- JavaScript for Adding New Content -->
+  <script>
+    function toggleForm() {
+      const form = document.getElementById('newContentForm');
+      form.classList.toggle('hidden');
+    }
+
+    function addNewContent() {
+      const title = document.getElementById('newTitle').value;
+      const type = document.getElementById('newType').value;
+      const content = document.getElementById('newContent').value;
+
+      if(title === "" || content === "") {
+        alert("শিরোনাম এবং কনটেন্ট অবশ্যই লিখুন!");
+        return;
+      }
+
+      const newArticle = document.createElement('article');
+      const newH3 = document.createElement('h3');
+      newH3.textContent = title;
+      const newP = document.createElement('p');
+      newP.textContent = content;
+
+      newArticle.appendChild(newH3);
+      newArticle.appendChild(newP);
+
+      if(type === "story") {
+        document.getElementById('stories').appendChild(newArticle);
+      } else {
+        document.getElementById('poems').appendChild(newArticle);
+      }
+
+      // Clear form
+      document.getElementById('newTitle').value = "";
+      document.getElementById('newContent').value = "";
+      document.getElementById('newContentForm').classList.add('hidden');
+    }
+  </script>
+
+</body>
+</html>
